@@ -1,12 +1,9 @@
 <script lang='ts' setup>
-import { emit } from '@tauri-apps/api/event'
-import type { ConfigError } from '~/server/api/auth'
-
 const route = useRoute()
 const code = route.query.code as string
 const action = route.query.action as string
 const runtimeConfig = useRuntimeConfig()
-const error = ref<ConfigError>()
+const error = ref<any>()
 
 async function auth() {
   if (!code) {
