@@ -3,22 +3,27 @@ import { emit } from '@tauri-apps/api/event'
 import type { ConfigError } from '~/server/api/auth'
 
 const route = useRoute()
-const router = useRouter()
 const code = route.query.code as string
 const action = route.query.action as string
 const runtimeConfig = useRuntimeConfig()
 const error = ref<ConfigError>()
 
 async function auth() {
-  if (!code)
-    return router.push(`/authorization_error?code_error=true`)
+  if (!code) {
+    error.value = {
+      error: 'code error',
+      error_description: 'code undefine',
+      error_uri: location.href,
+    }
+    return location.href = runtimeConfig.public.app_redirect_uri + new URLSearchParams(error.value as any).toString()
+  }
 
   const token = await $fetch('/api/auth', { params: { code } })
-  if ('error' in token) {
+  const payload = `?${new URLSearchParams(token).toString()}`
+  if ('error' in token)
     error.value = token
-    return emit('auth:error', token)
-  }
-  else { return emit('auth:success', token) }
+
+  return location.href = runtimeConfig.public.app_redirect_uri + payload
 }
 
 function install() {

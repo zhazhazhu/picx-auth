@@ -18,6 +18,7 @@ export default defineNuxtConfig({
       client_secret: process.env.GITHUB_CLIENT_SECRET,
       redirect_uri: process.env.GITHUB_REDIRECT_URI,
       install_uri: process.env.GITHUB_INSTALL_URL,
+      app_redirect_uri: process.env.APP_REDIRECT_URI,
     },
   },
 
