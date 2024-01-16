@@ -5,20 +5,20 @@ useHead({
   title: appName,
 })
 
-const colorMode = useColorMode()
-const isDark = computed({
-  get() {
-    return colorMode.value === 'dark'
-  },
-  set() {
-    colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
-  },
-})
+// const colorMode = useColorMode()
+// const isDark = computed({
+//   get() {
+//     return colorMode.value === 'dark'
+//   },
+//   set() {
+//     colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
+//   },
+// })
 </script>
 
 <template>
   <UContainer>
-    <div class="flex py-4">
+    <!-- <div class="h-60px flex items-center">
       <div flex-1>
         <div class="flex items-center">
           <span class="ml-2 text-1.6rem">Picx</span>
@@ -39,7 +39,7 @@ const isDark = computed({
           </template>
         </ClientOnly>
       </div>
-    </div>
+    </div> -->
 
     <NuxtPage />
   </UContainer>
@@ -47,11 +47,11 @@ const isDark = computed({
 
 <style>
 body {
-  background-color: #fff;
-  color: rgba(0,0,0,0.8);
-}
-.dark body {
-  background-color: #091a28;
+  background-color: #000000;
   color: #ebf4f1;
 }
+/* .dark body {
+  background-color: #000000;
+  color: #ebf4f1;
+} */
 </style>

@@ -9,15 +9,17 @@ const login_uri = `https://github.com/login/oauth/authorize?${new URLSearchParam
   redirect_uri,
 }).toString()}`
 
-setTimeout(() => {
-  location.href = login_uri
-}, 500)
+onMounted(() => {
+  setTimeout(() => {
+    location.href = login_uri
+  }, 500)
+})
 </script>
 
 <template>
-  <div class="flex flex-col items-center py-10 text-2xl tracking-wider">
+  <div class="h[calc(100vh-150px)] flex flex-col items-center justify-center tracking-wider">
     <div i-line-md-loading-twotone-loop class="text-3.5rem" />
-    <div class="py-10">
+    <div class="py-10 text-2.4rem">
       Connect To Github...
     </div>
   </div>
